@@ -19,4 +19,7 @@ public static class TemplateBezierCurve
         new Vector2(0.75f, 0.00f),
         new Vector2(1.00f, 0.00f)
     };
+
+
 }
+

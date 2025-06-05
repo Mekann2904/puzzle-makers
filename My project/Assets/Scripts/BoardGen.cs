@@ -57,8 +57,10 @@ public class BoardGen
                 // Tileコンストラクタの呼び出しを修正
                 Tile tile = new Tile(baseTexture, j, yIndexFromBottom, tileWidth, tileHeight, padding);
 
-                tile.SetCurveType(Tile.Direction.UP, verticalCurves[i + 1, j]);
-                tile.SetCurveType(Tile.Direction.DOWN, InvertCurve(verticalCurves[i, j]));
+                // 上下方向のカーブ指定を修正
+                // 行インデックスの扱いを誤っており、外周まで凸凹が生成されていました。
+                tile.SetCurveType(Tile.Direction.UP, verticalCurves[i, j]);
+                tile.SetCurveType(Tile.Direction.DOWN, InvertCurve(verticalCurves[i + 1, j]));
                 tile.SetCurveType(Tile.Direction.LEFT, InvertCurve(horizontalCurves[i, j]));
                 tile.SetCurveType(Tile.Direction.RIGHT, horizontalCurves[i, j + 1]);
 
