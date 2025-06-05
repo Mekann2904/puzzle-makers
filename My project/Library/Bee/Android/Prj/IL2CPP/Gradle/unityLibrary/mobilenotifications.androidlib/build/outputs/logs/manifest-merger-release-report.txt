@@ -1,0 +1,34 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:2:1-8:12
+INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:2:1-8:12
+	package
+		INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:3:3-75
+	android:name
+		ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:3:20-72
+application
+ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:4:3-7:17
+receiver#com.unity.androidnotifications.UnityNotificationManager
+ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:5:5-113
+	android:exported
+		ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:5:15-39
+	android:name
+		ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:5:40-110
+meta-data#com.unity.androidnotifications.exact_scheduling
+ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:6:5-99
+	android:value
+		ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:6:79-96
+	android:name
+		ADDED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml:6:16-78
+uses-sdk
+INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml
+INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/mobilenotifications.androidlib/src/main/AndroidManifest.xml

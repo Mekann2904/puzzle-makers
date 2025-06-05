@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638814246790000000
+      ticks: 638814419550000000
     m_Hash: 2596800999
   m_LockFileStatus:
     m_FilePath: /Users/mekann/github/puzzle-makers/My project/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638814247200000000
+      ticks: 638814419550000000
     m_Hash: 512036333
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -120,8 +120,12 @@ m_ResolvedPackages:
     - 2.5.2
     - 2.6.0
     - 2.7.1
+    - 2.8.1
+    - 2.8.2
     compatible:
     - 2.7.1
+    - 2.8.1
+    - 2.8.2
     recommended: 2.7.1
     deprecated: []
   dependencies: []
@@ -152,7 +156,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638751271186710000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.7/manual/index.html
@@ -255,32 +259,32 @@ m_ResolvedPackages:
     version: 10.2.0
   - name: com.unity.2d.common
     version: 9.1.0
-  - name: com.unity.2d.sprite
-    version: 1.0.0
+  - name: com.unity.burst
+    version: 1.8.21
   - name: com.unity.mathematics
     version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.21
   - name: com.unity.collections
     version: 2.5.1
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   - name: com.unity.2d.pixel-perfect
@@ -514,7 +518,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638799562419060000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
@@ -617,7 +621,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638786696173840000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.visualstudio@2.0/manual/index.html
@@ -762,7 +766,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638780752796560000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/index.html
@@ -985,12 +989,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.1
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   - name: com.unity.modules.physics
@@ -1065,7 +1069,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: assets
   description: Use Unity Timeline to create cinematic content, game-play sequences,
     audio sequences, and complex particle effects.
   errors: []
@@ -1165,18 +1169,18 @@ m_ResolvedPackages:
     recommended: 1.8.8
     deprecated: []
   dependencies:
+  - name: com.unity.modules.audio
+    version: 1.0.0
   - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
-  - name: com.unity.modules.audio
-    version: 1.0.0
   - name: com.unity.modules.particlesystem
     version: 1.0.0
   resolvedDependencies:
-  - name: com.unity.modules.director
-    version: 1.0.0
   - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
@@ -1198,7 +1202,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638524833900000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.timeline@1.8/manual/index.html
@@ -1412,7 +1416,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638769546699650000
   documentationUrl: 
@@ -4038,12 +4042,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.1
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   - name: com.unity.modules.physics
@@ -4239,12 +4243,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.1
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   - name: com.unity.modules.physics
@@ -4339,12 +4343,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.1
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   - name: com.unity.modules.physics
@@ -4675,7 +4679,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638801672940570000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.mobile.android-logcat@1.4/manual/index.html
@@ -4785,9 +4789,11 @@ m_ResolvedPackages:
     - 5.1.1
     - 5.1.2
     - 5.1.3
+    - 5.1.4
     compatible:
     - 5.1.3
-    recommended: 5.1.3
+    - 5.1.4
+    recommended: 5.1.4
     deprecated: []
   dependencies:
   - name: com.unity.profiling.core
@@ -4829,7 +4835,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638775943083180000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.adaptiveperformance@5.1/manual/index.html
@@ -4953,7 +4959,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638654461305940000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.mobile.notifications@2.4/manual/index.html
@@ -5157,32 +5163,32 @@ m_ResolvedPackages:
   resolvedDependencies:
   - name: com.unity.2d.common
     version: 9.1.0
-  - name: com.unity.2d.sprite
-    version: 1.0.0
+  - name: com.unity.burst
+    version: 1.8.21
   - name: com.unity.mathematics
     version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.21
   - name: com.unity.collections
     version: 2.5.1
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   keywords:
@@ -5198,7 +5204,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638774696150700000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.animation@10.2/manual/index.html
@@ -5302,7 +5308,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638775664687690000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.pixel-perfect@5.1/manual/index.html
@@ -5450,24 +5456,24 @@ m_ResolvedPackages:
   resolvedDependencies:
   - name: com.unity.2d.common
     version: 9.1.0
-  - name: com.unity.2d.sprite
-    version: 1.0.0
+  - name: com.unity.burst
+    version: 1.8.21
   - name: com.unity.mathematics
     version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.21
   - name: com.unity.2d.tilemap
     version: 1.0.0
   - name: com.unity.modules.tilemap
@@ -5488,7 +5494,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638774696118990000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.psdimporter@10.1/manual/index.html
@@ -5708,18 +5714,24 @@ m_ResolvedPackages:
     recommended: 10.1.0
     deprecated: []
   dependencies:
-  - name: com.unity.mathematics
-    version: 1.1.0
   - name: com.unity.2d.common
     version: 9.1.0
+  - name: com.unity.mathematics
+    version: 1.1.0
   - name: com.unity.modules.physics2d
     version: 1.0.0
   resolvedDependencies:
-  - name: com.unity.mathematics
-    version: 1.3.2
   - name: com.unity.2d.common
     version: 9.1.0
+  - name: com.unity.burst
+    version: 1.8.21
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
   - name: com.unity.2d.sprite
+    version: 1.0.0
+  - name: com.unity.modules.animation
     version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
@@ -5727,14 +5739,8 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.21
   - name: com.unity.modules.physics2d
     version: 1.0.0
   keywords:
@@ -5754,7 +5760,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638774696104570000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.spriteshape@10.1/manual/index.html
@@ -5949,18 +5955,18 @@ m_ResolvedPackages:
     recommended: 4.3.0
     deprecated: []
   dependencies:
-  - name: com.unity.modules.tilemap
-    version: 1.0.0
   - name: com.unity.2d.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.tilemap
     version: 1.0.0
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   resolvedDependencies:
+  - name: com.unity.2d.tilemap
+    version: 1.0.0
   - name: com.unity.modules.tilemap
     version: 1.0.0
   - name: com.unity.modules.physics2d
-    version: 1.0.0
-  - name: com.unity.2d.tilemap
     version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
@@ -5984,7 +5990,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638774696076300000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@4.3/manual/index.html
@@ -6065,24 +6071,28 @@ m_ResolvedPackages:
     recommended: 1.2.4
     deprecated: []
   dependencies:
+  - name: com.unity.2d.common
+    version: 6.0.6
   - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.2d.tilemap
     version: 1.0.0
-  - name: com.unity.2d.common
-    version: 6.0.6
   - name: com.unity.mathematics
     version: 1.2.6
   - name: com.unity.modules.animation
     version: 1.0.0
   resolvedDependencies:
+  - name: com.unity.2d.common
+    version: 9.1.0
+  - name: com.unity.burst
+    version: 1.8.21
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
   - name: com.unity.2d.sprite
     version: 1.0.0
-  - name: com.unity.2d.tilemap
-    version: 1.0.0
-  - name: com.unity.modules.tilemap
-    version: 1.0.0
-  - name: com.unity.modules.physics2d
+  - name: com.unity.modules.animation
     version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
@@ -6090,18 +6100,14 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
-  - name: com.unity.2d.common
-    version: 9.1.0
-  - name: com.unity.mathematics
-    version: 1.3.2
-  - name: com.unity.modules.animation
+  - name: com.unity.2d.tilemap
     version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.21
+  - name: com.unity.modules.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.physics2d
+    version: 1.0.0
   keywords:
   - 2d
   - Aseprite
@@ -6118,7 +6124,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638796177517290000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.aseprite@1.2/manual/index.html
@@ -6419,7 +6425,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638797336625580000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.burst@1.8/manual/index.html
@@ -6485,7 +6491,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: assets
   description: Unity's C# SIMD math library providing vector types and math functions
     with a shader like syntax.
   errors: []
@@ -6528,7 +6534,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638409134840000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/index.html
@@ -6666,10 +6672,10 @@ m_ResolvedPackages:
   dependencies:
   - name: com.unity.burst
     version: 1.8.17
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.4.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.0.3
   resolvedDependencies:
@@ -6679,14 +6685,14 @@ m_ResolvedPackages:
     version: 1.3.2
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
   - name: com.unity.modules.imgui
     version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   keywords:
@@ -6703,7 +6709,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638621282722800000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.collections@2.5/manual/index.html
@@ -6776,14 +6782,14 @@ m_ResolvedPackages:
     version: 1.3.2
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.4
   - name: com.unity.test-framework
     version: 1.5.1
   - name: com.unity.ext.nunit
     version: 2.0.5
   - name: com.unity.modules.imgui
     version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
   - name: com.unity.test-framework.performance
     version: 3.1.0
   - name: com.unity.modules.terrain
@@ -6845,7 +6851,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: The Unity Profiling Core package provides an API for code instrumentation
     markup, and for profiling statistic collection.
   errors: []
@@ -6877,7 +6883,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 637828752310000000
   documentationUrl: 
@@ -6995,35 +7001,35 @@ m_ResolvedPackages:
     recommended: 9.1.0
     deprecated: []
   dependencies:
+  - name: com.unity.burst
+    version: 1.8.4
   - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.mathematics
     version: 1.1.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.burst
+    version: 1.8.21
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.4
-  resolvedDependencies:
-  - name: com.unity.2d.sprite
-    version: 1.0.0
-  - name: com.unity.mathematics
-    version: 1.3.2
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.21
   keywords:
   - 2d
   registry:
@@ -7036,7 +7042,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638774696088020000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.common@9.1/manual/index.html
@@ -7120,7 +7126,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 637852971930000000
   documentationUrl: 
@@ -7252,7 +7258,7 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638792643567670000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.test-framework.performance@3.1/manual/index.html

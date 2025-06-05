@@ -1,0 +1,20 @@
+/Applications/Unity/Hub/Editor/6000.1.0f1/PlaybackEngines/AndroidPlayer/OpenJDK/bin/java \
+  --class-path \
+  /Users/mekann/.gradle/caches/modules-2/files-2.1/com.google.prefab/cli/2.1.0/aa32fec809c44fa531f01dcfb739b5b3304d3050/cli-2.1.0-all.jar \
+  com.google.prefab.cli.AppKt \
+  --build-system \
+  cmake \
+  --platform \
+  android \
+  --abi \
+  arm64-v8a \
+  --os-version \
+  23 \
+  --stl \
+  c++_shared \
+  --ndk-version \
+  27 \
+  --output \
+  /var/folders/c8/9qdjxqcx6xzb6s5mv2nv7jlm0000gn/T/agp-prefab-staging18055457959260588133/staged-cli-output \
+  /Users/mekann/.gradle/caches/8.11/transforms/cf11df13d2fd9a509170edfac64a04e6/transformed/jetified-games-activity-3.0.5/prefab \
+  /Users/mekann/.gradle/caches/8.11/transforms/9e2da323fa37aa33f0b1b3514982095f/transformed/jetified-games-frame-pacing-2.1.2/prefab
