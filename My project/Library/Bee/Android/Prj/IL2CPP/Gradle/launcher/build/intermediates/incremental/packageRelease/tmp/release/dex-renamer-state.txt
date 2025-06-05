@@ -1,0 +1,7 @@
+#Thu May 15 15:25:13 JST 2025
+base.1=/Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/launcher/build/intermediates/global_synthetics_dex/release/mergeReleaseGlobalSynthetics/classes.dex
+path.1=classes.dex
+base.0=/Users/mekann/github/puzzle-makers/My project/Library/Bee/Android/Prj/IL2CPP/Gradle/launcher/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

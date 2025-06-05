@@ -1,3 +1,5 @@
 *.unity filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.dylib filter=lfs diff=lfs merge=lfs -text
+My[[:space:]]project/Assets/TextMesh[[:space:]]Pro/Resources/Fonts[[:space:]]&[[:space:]]Materials/NotoSansJP-VariableFont_wght[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+My[[:space:]]project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/local_aar_for_lint/release/out.aar filter=lfs diff=lfs merge=lfs -text

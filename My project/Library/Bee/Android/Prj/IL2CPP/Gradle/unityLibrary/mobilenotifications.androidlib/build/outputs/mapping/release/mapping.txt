@@ -1,0 +1,373 @@
+# compiler: R8
+# compiler_version: 8.7.18
+# common_typos_disable
+# {"id":"com.android.tools.r8.mapping","version":"2.2"}
+# pg_map_id: 1bc5b29
+# pg_map_hash: SHA-256 1bc5b2994204ad7bd8357bf338a8c222ab8948d8dde90214951cb5e6a6f029df
+com.unity.androidnotifications.NotificationCallback -> com.unity.androidnotifications.NotificationCallback:
+# {"id":"sourceFile","fileName":"UnityNotificationManager.java"}
+com.unity.androidnotifications.NotificationChannelWrapper -> com.unity.androidnotifications.a:
+# {"id":"sourceFile","fileName":"UnityNotificationManager.java"}
+    java.lang.String id -> a
+    int importance -> b
+    long[] vibrationPattern -> c
+    int lockscreenVisibility -> d
+    java.lang.String group -> e
+    1:1:void <init>():1087:1087 -> <init>
+com.unity.androidnotifications.UnityNotificationBackgroundThread -> com.unity.androidnotifications.g:
+# {"id":"sourceFile","fileName":"UnityNotificationBackgroundThread.java"}
+    java.util.concurrent.LinkedTransferQueue mTasks -> a
+    java.util.concurrent.ConcurrentHashMap mScheduledNotifications -> b
+    com.unity.androidnotifications.UnityNotificationManager mManager -> c
+    int mTasksSinceHousekeeping -> d
+    1:1:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):121:121 -> <init>
+    2:11:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):116:125 -> <init>
+    12:12:void loadNotifications():184:184 -> <init>
+    12:12:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    13:19:java.util.List com.unity.androidnotifications.UnityNotificationManager.loadSavedNotifications():532:538 -> <init>
+    13:19:void loadNotifications():184 -> <init>
+    13:19:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    20:20:java.lang.String com.unity.androidnotifications.UnityNotificationManager.getSharedPrefsNameByNotificationId(java.lang.String):527:527 -> <init>
+    20:20:java.util.List com.unity.androidnotifications.UnityNotificationManager.loadSavedNotifications():538 -> <init>
+    20:20:void loadNotifications():184 -> <init>
+    20:20:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    21:43:java.util.List com.unity.androidnotifications.UnityNotificationManager.loadSavedNotifications():538:560 -> <init>
+    21:43:void loadNotifications():184 -> <init>
+    21:43:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    44:44:java.util.List com.unity.androidnotifications.UnityNotificationManager.loadSavedNotifications():554:554 -> <init>
+    44:44:void loadNotifications():184 -> <init>
+    44:44:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    45:55:void loadNotifications():185:195 -> <init>
+    45:55:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    56:56:void enqueueHousekeeping():142:142 -> <init>
+    56:56:void loadNotifications():201 -> <init>
+    56:56:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    57:57:void loadNotifications():202:202 -> <init>
+    57:57:void <init>(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):126 -> <init>
+    1:1:void enqueueNotification(int,android.app.Notification$Builder,boolean,boolean):130:130 -> a
+    2:2:void enqueueCancelNotification(int):134:134 -> a
+    3:3:void enqueueCancelAllNotifications():138:138 -> a
+    1:2:void run():150:151 -> run
+    3:5:boolean executeTask(com.unity.androidnotifications.UnityNotificationManager,com.unity.androidnotifications.UnityNotificationBackgroundThread$Task,java.util.concurrent.ConcurrentHashMap):167:169 -> run
+    3:5:void run():151 -> run
+    6:8:void run():152:154 -> run
+    9:9:void enqueueHousekeeping():142:142 -> run
+    9:9:void run():156 -> run
+    10:10:void run():159:159 -> run
+com.unity.androidnotifications.UnityNotificationBackgroundThread$CancelAllNotificationsTask -> com.unity.androidnotifications.b:
+# {"id":"sourceFile","fileName":"UnityNotificationBackgroundThread.java"}
+    1:1:void <init>():78:78 -> <init>
+    1:1:void <init>(com.unity.androidnotifications.UnityNotificationBackgroundThread$1):78 -> <init>
+      # {"id":"com.android.tools.r8.residualsignature","signature":"()V"}
+    1:11:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):81:91 -> a
+com.unity.androidnotifications.UnityNotificationBackgroundThread$CancelNotificationTask -> com.unity.androidnotifications.c:
+# {"id":"sourceFile","fileName":"UnityNotificationBackgroundThread.java"}
+    int notificationId -> a
+    1:2:void <init>(int):62:63 -> <init>
+    1:3:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):68:70 -> a
+com.unity.androidnotifications.UnityNotificationBackgroundThread$HousekeepingTask -> com.unity.androidnotifications.d:
+# {"id":"sourceFile","fileName":"UnityNotificationBackgroundThread.java"}
+    com.unity.androidnotifications.UnityNotificationBackgroundThread thread -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lcom/unity/androidnotifications/g;"}
+    1:2:void <init>(com.unity.androidnotifications.UnityNotificationBackgroundThread):99:100 -> <init>
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lcom/unity/androidnotifications/g;)V"}
+    1:6:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):105:110 -> a
+    7:7:void com.unity.androidnotifications.UnityNotificationBackgroundThread.performHousekeeping(java.util.Set):176:176 -> a
+    7:7:void com.unity.androidnotifications.UnityNotificationBackgroundThread.access$100(com.unity.androidnotifications.UnityNotificationBackgroundThread,java.util.Set):19 -> a
+      # {"id":"com.android.tools.r8.rewriteFrame","conditions":["throws(Ljava/lang/NullPointerException;)"],"actions":["removeInnerFrames(1)"]}
+    7:7:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):110 -> a
+    8:11:void com.unity.androidnotifications.UnityNotificationBackgroundThread.performHousekeeping(java.util.Set):177:180 -> a
+    8:11:void com.unity.androidnotifications.UnityNotificationBackgroundThread.access$100(com.unity.androidnotifications.UnityNotificationBackgroundThread,java.util.Set):19 -> a
+    8:11:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):110 -> a
+com.unity.androidnotifications.UnityNotificationBackgroundThread$ScheduleNotificationTask -> com.unity.androidnotifications.e:
+# {"id":"sourceFile","fileName":"UnityNotificationBackgroundThread.java"}
+    int notificationId -> a
+    android.app.Notification$Builder notificationBuilder -> b
+    boolean isCustomized -> c
+    boolean isNew -> d
+    1:5:void <init>(int,android.app.Notification$Builder,boolean,boolean):31:35 -> <init>
+    1:16:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):40:55 -> a
+    17:21:boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap):49:53 -> a
+com.unity.androidnotifications.UnityNotificationBackgroundThread$Task -> com.unity.androidnotifications.f:
+# {"id":"sourceFile","fileName":"UnityNotificationBackgroundThread.java"}
+    1:1:void <init>():20:20 -> <init>
+    1:1:void <init>(com.unity.androidnotifications.UnityNotificationBackgroundThread$1):20 -> <init>
+      # {"id":"com.android.tools.r8.residualsignature","signature":"()V"}
+    boolean run(com.unity.androidnotifications.UnityNotificationManager,java.util.concurrent.ConcurrentHashMap) -> a
+com.unity.androidnotifications.UnityNotificationManager -> com.unity.androidnotifications.UnityNotificationManager:
+# {"id":"sourceFile","fileName":"UnityNotificationManager.java"}
+    android.content.Context mContext -> a
+    android.app.Activity mActivity -> b
+    java.lang.Class mOpenActivity -> c
+    com.unity.androidnotifications.UnityNotificationBackgroundThread mBackgroundThread -> d
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lcom/unity/androidnotifications/g;"}
+    java.util.Random mRandom -> e
+    java.util.HashSet mVisibleNotifications -> f
+    java.util.concurrent.ConcurrentHashMap mScheduledNotifications -> g
+    com.unity.androidnotifications.NotificationCallback mNotificationCallback -> h
+    int mExactSchedulingSetting -> i
+    com.unity.androidnotifications.UnityNotificationManager mUnityNotificationManager -> j
+    1:12:void <init>():47:58 -> <init>
+    1:9:com.unity.androidnotifications.UnityNotificationManager getNotificationManagerImpl(android.content.Context):112:120 -> a
+    10:10:android.os.Bundle getAppMetadata():135:135 -> a
+    11:16:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):376:381 -> a
+    17:18:android.content.Intent buildNotificationIntent():499:500 -> a
+    17:18:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):388 -> a
+    19:19:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391:391 -> a
+    20:21:void saveNotification(android.app.Notification,boolean):521:522 -> a
+    20:21:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    22:22:java.lang.String getSharedPrefsNameByNotificationId(java.lang.String):527:527 -> a
+    22:22:void saveNotification(android.app.Notification,boolean):522 -> a
+    22:22:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    23:23:void saveNotification(android.app.Notification,boolean):522:522 -> a
+    23:23:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    24:28:void com.unity.androidnotifications.UnityNotificationUtilities.serializeNotification(android.content.SharedPreferences,android.app.Notification,boolean):88:92 -> a
+    24:28:void saveNotification(android.app.Notification,boolean):523 -> a
+    24:28:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    29:35:boolean com.unity.androidnotifications.UnityNotificationUtilities.serializeNotificationParcel(android.content.Intent,java.io.DataOutputStream):121:127 -> a
+    29:35:void com.unity.androidnotifications.UnityNotificationUtilities.serializeNotification(android.content.SharedPreferences,android.app.Notification,boolean):93 -> a
+    29:35:void saveNotification(android.app.Notification,boolean):523 -> a
+    29:35:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    36:38:void com.unity.androidnotifications.UnityNotificationUtilities.serializeNotification(android.content.SharedPreferences,android.app.Notification,boolean):94:96 -> a
+    36:38:void saveNotification(android.app.Notification,boolean):523 -> a
+    36:38:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    39:39:boolean com.unity.androidnotifications.UnityNotificationUtilities.serializeNotificationParcel(android.content.Intent,java.io.DataOutputStream):132:132 -> a
+    39:39:void com.unity.androidnotifications.UnityNotificationUtilities.serializeNotification(android.content.SharedPreferences,android.app.Notification,boolean):93 -> a
+    39:39:void saveNotification(android.app.Notification,boolean):523 -> a
+    39:39:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    40:40:boolean com.unity.androidnotifications.UnityNotificationUtilities.serializeNotificationParcel(android.content.Intent,java.io.DataOutputStream):130:130 -> a
+    40:40:void com.unity.androidnotifications.UnityNotificationUtilities.serializeNotification(android.content.SharedPreferences,android.app.Notification,boolean):93 -> a
+    40:40:void saveNotification(android.app.Notification,boolean):523 -> a
+    40:40:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    41:56:void com.unity.androidnotifications.UnityNotificationUtilities.serializeNotification(android.content.SharedPreferences,android.app.Notification,boolean):102:117 -> a
+    41:56:void saveNotification(android.app.Notification,boolean):523 -> a
+    41:56:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):391 -> a
+    57:67:void scheduleAlarmWithNotification(android.app.Notification$Builder,android.content.Intent,long):403:413 -> a
+    57:67:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):392 -> a
+    68:71:void scheduleNotificationIntentAlarm(long,long,android.app.PendingIntent):590:593 -> a
+    68:71:void scheduleAlarmWithNotification(android.app.Notification$Builder,android.content.Intent,long):414 -> a
+    68:71:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):392 -> a
+    72:82:boolean canScheduleExactAlarms(android.app.AlarmManager):570:580 -> a
+    72:82:void scheduleNotificationIntentAlarm(long,long,android.app.PendingIntent):593 -> a
+    72:82:void scheduleAlarmWithNotification(android.app.Notification$Builder,android.content.Intent,long):414 -> a
+    72:82:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):392 -> a
+    83:88:void scheduleNotificationIntentAlarm(long,long,android.app.PendingIntent):594:599 -> a
+    83:88:void scheduleAlarmWithNotification(android.app.Notification$Builder,android.content.Intent,long):414 -> a
+    83:88:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):392 -> a
+    89:92:void performNotificationScheduling(int,android.app.Notification$Builder,boolean):397:400 -> a
+    93:96:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):424:427 -> a
+    97:100:android.app.PendingIntent getActivityPendingIntent(int,android.content.Intent,int):505:508 -> a
+    97:100:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):428 -> a
+    101:109:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):429:437 -> a
+    110:110:void finalizeNotificationForDisplay(android.app.Notification$Builder):792:792 -> a
+    110:110:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    111:114:java.lang.Object getIconForUri(java.lang.String):831:834 -> a
+    111:114:void finalizeNotificationForDisplay(android.app.Notification$Builder):793 -> a
+    111:114:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    115:124:void finalizeNotificationForDisplay(android.app.Notification$Builder):795:804 -> a
+    115:124:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    125:128:java.lang.Object getIcon(java.lang.String):817:820 -> a
+    125:128:void finalizeNotificationForDisplay(android.app.Notification$Builder):805 -> a
+    125:128:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    129:132:java.lang.Object getIconForUri(java.lang.String):831:834 -> a
+    129:132:java.lang.Object getIcon(java.lang.String):823 -> a
+    129:132:void finalizeNotificationForDisplay(android.app.Notification$Builder):805 -> a
+    129:132:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    133:137:java.lang.Object getIconFromResources(java.lang.String,boolean):841:845 -> a
+    133:137:java.lang.Object getIcon(java.lang.String):827 -> a
+    133:137:void finalizeNotificationForDisplay(android.app.Notification$Builder):805 -> a
+    133:137:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    138:141:void finalizeNotificationForDisplay(android.app.Notification$Builder):807:810 -> a
+    138:141:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    142:147:void setupBigPictureStyle(android.app.Notification$Builder):926:931 -> a
+    142:147:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    142:147:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    148:151:java.lang.Object getIcon(java.lang.String):817:820 -> a
+    148:151:void setupBigPictureStyle(android.app.Notification$Builder):932 -> a
+    148:151:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    148:151:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    152:155:java.lang.Object getIconForUri(java.lang.String):831:834 -> a
+    152:155:java.lang.Object getIcon(java.lang.String):823 -> a
+    152:155:void setupBigPictureStyle(android.app.Notification$Builder):932 -> a
+    152:155:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    152:155:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    156:160:java.lang.Object getIconFromResources(java.lang.String,boolean):841:845 -> a
+    156:160:java.lang.Object getIcon(java.lang.String):827 -> a
+    156:160:void setupBigPictureStyle(android.app.Notification$Builder):932 -> a
+    156:160:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    156:160:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    161:172:void setupBigPictureStyle(android.app.Notification$Builder):934:945 -> a
+    161:172:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    161:172:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    173:176:android.graphics.Bitmap loadBitmap(java.lang.String):853:856 -> a
+    173:176:void setupBigPictureStyle(android.app.Notification$Builder):947 -> a
+    173:176:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    173:176:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    177:177:void setupBigPictureStyle(android.app.Notification$Builder):949:949 -> a
+    177:177:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    177:177:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    178:182:java.lang.Object getIconFromResources(java.lang.String,boolean):841:845 -> a
+    178:182:void setupBigPictureStyle(android.app.Notification$Builder):953 -> a
+    178:182:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    178:182:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    183:196:void setupBigPictureStyle(android.app.Notification$Builder):954:967 -> a
+    183:196:void finalizeNotificationForDisplay(android.app.Notification$Builder):813 -> a
+    183:196:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):440 -> a
+    197:197:android.app.Notification buildNotificationForSending(java.lang.Class,android.app.Notification$Builder):441:441 -> a
+    198:198:void performNotificationHousekeeping(java.util.Set):445:445 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Ljava/util/HashSet;)V"}
+    199:200:android.content.Intent buildNotificationIntent():499:500 -> a
+    199:200:java.util.Set findInvalidNotificationIds(java.util.Set):460 -> a
+    199:200:void performNotificationHousekeeping(java.util.Set):447 -> a
+    201:231:java.util.Set findInvalidNotificationIds(java.util.Set):461:491 -> a
+    201:231:void performNotificationHousekeeping(java.util.Set):447 -> a
+    232:240:void performNotificationHousekeeping(java.util.Set):448:456 -> a
+    241:241:java.util.Set findInvalidNotificationIds(java.util.Set):484:484 -> a
+    241:241:void performNotificationHousekeeping(java.util.Set):447 -> a
+    242:245:android.app.PendingIntent getBroadcastPendingIntent(int,android.content.Intent,int):512:515 -> a
+    246:252:void cancelPendingNotificationIntent(int):655:661 -> a
+    253:253:void deleteExpiredNotificationIntent(java.lang.String):667:667 -> a
+    254:254:java.lang.String getSharedPrefsNameByNotificationId(java.lang.String):527:527 -> a
+    254:254:void deleteExpiredNotificationIntent(java.lang.String):667 -> a
+    255:256:void deleteExpiredNotificationIntent(java.lang.String):667:668 -> a
+    257:257:void notify(int,android.app.Notification):754:754 -> a
+    258:260:boolean isInForeground():997:999 -> a
+    258:260:void notify(int,android.app.Notification):755 -> a
+    261:277:void notify(int,android.app.Notification):756:772 -> a
+    278:283:java.lang.Object getNotificationOrIdForIntent(android.content.Intent):1025:1030 -> a
+    278:283:void showNotification(android.content.Intent):703 -> a
+    284:294:void showNotification(android.content.Intent):708:718 -> a
+    295:308:void notify(int,android.app.Notification$Builder):735:748 -> a
+    295:308:void showNotification(android.content.Intent):718 -> a
+    309:309:void showNotification(android.content.Intent):722:722 -> a
+    310:310:android.app.Notification$Builder deserializeNotificationBuilder(java.lang.Integer):1050:1050 -> a
+    310:310:void lambda$showNotification$0(java.lang.Integer):723 -> a
+    311:311:java.lang.String getSharedPrefsNameByNotificationId(java.lang.String):527:527 -> a
+    311:311:android.app.Notification$Builder deserializeNotificationBuilder(java.lang.Integer):1050 -> a
+    311:311:void lambda$showNotification$0(java.lang.Integer):723 -> a
+    312:322:android.app.Notification$Builder deserializeNotificationBuilder(java.lang.Integer):1050:1060 -> a
+    312:322:void lambda$showNotification$0(java.lang.Integer):723 -> a
+    323:327:void lambda$showNotification$0(java.lang.Integer):725:729 -> a
+    328:341:void notify(int,android.app.Notification$Builder):735:748 -> a
+    328:341:void lambda$showNotification$0(java.lang.Integer):729 -> a
+    1:3:int areNotificationsEnabled():152:154 -> areNotificationsEnabled
+    1:2:java.util.Set getScheduledNotificationIDs():637:638 -> b
+    3:5:void saveScheduledNotificationIDs(java.util.Set):643:645 -> b
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Ljava/util/HashSet;)V"}
+    1:1:boolean canScheduleExactAlarms():584:584 -> canScheduleExactAlarms
+    2:14:boolean canScheduleExactAlarms(android.app.AlarmManager):568:580 -> canScheduleExactAlarms
+    2:14:boolean canScheduleExactAlarms():585 -> canScheduleExactAlarms
+    1:1:void cancelAllNotifications():678:678 -> cancelAllNotifications
+    1:1:void cancelAllPendingNotificationIntents():633:633 -> cancelAllPendingNotificationIntents
+    1:1:void cancelDisplayedNotification(int):673:673 -> cancelDisplayedNotification
+    1:1:void cancelPendingNotification(int):650:650 -> cancelPendingNotification
+    1:2:boolean checkIfPendingNotificationIsRegistered(int):627:628 -> checkIfPendingNotificationIsRegistered
+    1:15:int checkNotificationStatus(int):605:619 -> checkNotificationStatus
+    16:16:int checkNotificationStatus(int):615:615 -> checkNotificationStatus
+    1:39:android.app.Notification$Builder createNotificationBuilder(java.lang.String):863:901 -> createNotificationBuilder
+    1:18:void deleteNotificationChannel(java.lang.String):303:320 -> deleteNotificationChannel
+    19:19:java.lang.String getSharedPrefsNameByChannelId(java.lang.String):239:239 -> deleteNotificationChannel
+    19:19:void deleteNotificationChannel(java.lang.String):320 -> deleteNotificationChannel
+    20:21:void deleteNotificationChannel(java.lang.String):320:321 -> deleteNotificationChannel
+    1:6:void deleteNotificationChannelGroup(java.lang.String):174:179 -> deleteNotificationChannelGroup
+    1:2:com.unity.androidnotifications.NotificationChannelWrapper getNotificationChannel(java.lang.String):243:244 -> getNotificationChannel
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Ljava/lang/String;)Lcom/unity/androidnotifications/a;"}
+    3:15:com.unity.androidnotifications.NotificationChannelWrapper notificationChannelToWrapper(java.lang.Object):285:297 -> getNotificationChannel
+    3:15:com.unity.androidnotifications.NotificationChannelWrapper getNotificationChannel(java.lang.String):247 -> getNotificationChannel
+    16:16:com.unity.androidnotifications.NotificationChannelWrapper getNotificationChannel(java.lang.String):250:250 -> getNotificationChannel
+    17:17:java.lang.String getSharedPrefsNameByChannelId(java.lang.String):239:239 -> getNotificationChannel
+    17:17:com.unity.androidnotifications.NotificationChannelWrapper getNotificationChannel(java.lang.String):250 -> getNotificationChannel
+    18:45:com.unity.androidnotifications.NotificationChannelWrapper getNotificationChannel(java.lang.String):250:277 -> getNotificationChannel
+    1:2:java.lang.String getNotificationChannelId(android.app.Notification):989:990 -> getNotificationChannelId
+    1:7:com.unity.androidnotifications.NotificationChannelWrapper[] getNotificationChannels():326:332 -> getNotificationChannels
+      # {"id":"com.android.tools.r8.residualsignature","signature":"()[Lcom/unity/androidnotifications/a;"}
+    8:20:com.unity.androidnotifications.NotificationChannelWrapper notificationChannelToWrapper(java.lang.Object):285:297 -> getNotificationChannels
+    8:20:com.unity.androidnotifications.NotificationChannelWrapper[] getNotificationChannels():333 -> getNotificationChannels
+    21:33:com.unity.androidnotifications.NotificationChannelWrapper[] getNotificationChannels():333:345 -> getNotificationChannels
+    1:6:java.lang.Integer getNotificationColor(android.app.Notification):777:782 -> getNotificationColor
+    1:7:android.app.Notification getNotificationFromIntent(android.content.Intent):1003:1009 -> getNotificationFromIntent
+    8:13:java.lang.Object getNotificationOrIdForIntent(android.content.Intent):1025:1030 -> getNotificationFromIntent
+    8:13:java.lang.Object getNotificationOrBuilderForIntent(android.content.Intent):1037 -> getNotificationFromIntent
+    8:13:android.app.Notification getNotificationFromIntent(android.content.Intent):1015 -> getNotificationFromIntent
+    14:16:java.lang.Object getNotificationOrBuilderForIntent(android.content.Intent):1038:1040 -> getNotificationFromIntent
+    14:16:android.app.Notification getNotificationFromIntent(android.content.Intent):1015 -> getNotificationFromIntent
+    17:17:android.app.Notification$Builder deserializeNotificationBuilder(java.lang.Integer):1050:1050 -> getNotificationFromIntent
+    17:17:java.lang.Object getNotificationOrBuilderForIntent(android.content.Intent):1042 -> getNotificationFromIntent
+    17:17:android.app.Notification getNotificationFromIntent(android.content.Intent):1015 -> getNotificationFromIntent
+    18:18:java.lang.String getSharedPrefsNameByNotificationId(java.lang.String):527:527 -> getNotificationFromIntent
+    18:18:android.app.Notification$Builder deserializeNotificationBuilder(java.lang.Integer):1050 -> getNotificationFromIntent
+    18:18:java.lang.Object getNotificationOrBuilderForIntent(android.content.Intent):1042 -> getNotificationFromIntent
+    18:18:android.app.Notification getNotificationFromIntent(android.content.Intent):1015 -> getNotificationFromIntent
+    19:29:android.app.Notification$Builder deserializeNotificationBuilder(java.lang.Integer):1050:1060 -> getNotificationFromIntent
+    19:29:java.lang.Object getNotificationOrBuilderForIntent(android.content.Intent):1042 -> getNotificationFromIntent
+    19:29:android.app.Notification getNotificationFromIntent(android.content.Intent):1015 -> getNotificationFromIntent
+    30:33:android.app.Notification getNotificationFromIntent(android.content.Intent):1018:1021 -> getNotificationFromIntent
+    1:2:int getNotificationGroupAlertBehavior(android.app.Notification):786:787 -> getNotificationGroupAlertBehavior
+    1:1:android.app.NotificationManager getNotificationManager():142:142 -> getNotificationManager
+    1:5:com.unity.androidnotifications.UnityNotificationManager getNotificationManagerImpl(android.app.Activity,com.unity.androidnotifications.NotificationCallback):125:129 -> getNotificationManagerImpl
+    6:24:void initialize(android.app.Activity,com.unity.androidnotifications.NotificationCallback):90:108 -> getNotificationManagerImpl
+    6:24:com.unity.androidnotifications.UnityNotificationManager getNotificationManagerImpl(android.app.Activity,com.unity.androidnotifications.NotificationCallback):129 -> getNotificationManagerImpl
+    25:25:com.unity.androidnotifications.UnityNotificationManager getNotificationManagerImpl(android.app.Activity,com.unity.androidnotifications.NotificationCallback):130:130 -> getNotificationManagerImpl
+    26:26:void initialize(android.app.Activity,com.unity.androidnotifications.NotificationCallback):106:106 -> getNotificationManagerImpl
+    26:26:com.unity.androidnotifications.UnityNotificationManager getNotificationManagerImpl(android.app.Activity,com.unity.androidnotifications.NotificationCallback):129 -> getNotificationManagerImpl
+    1:1:int getTargetSdk():146:146 -> getTargetSdk
+    1:1:void onReceive(android.content.Context,android.content.Intent):686:686 -> onReceive
+    2:11:void onReceive(android.content.Intent):690:699 -> onReceive
+    1:24:void registerNotificationChannel(java.lang.String,java.lang.String,int,java.lang.String,boolean,boolean,boolean,boolean,long[],int,java.lang.String):196:219 -> registerNotificationChannel
+    25:25:java.lang.String getSharedPrefsNameByChannelId(java.lang.String):239:239 -> registerNotificationChannel
+    25:25:void registerNotificationChannel(java.lang.String,java.lang.String,int,java.lang.String,boolean,boolean,boolean,boolean,long[],int,java.lang.String):219 -> registerNotificationChannel
+    26:40:void registerNotificationChannel(java.lang.String,java.lang.String,int,java.lang.String,boolean,boolean,boolean,boolean,long[],int,java.lang.String):219:233 -> registerNotificationChannel
+    1:7:void registerNotificationChannelGroup(java.lang.String,java.lang.String,java.lang.String):161:167 -> registerNotificationChannelGroup
+    1:4:int scheduleNotification(android.app.Notification$Builder,boolean):361:364 -> scheduleNotification
+    5:6:int generateUniqueId():354:355 -> scheduleNotification
+    5:6:int scheduleNotification(android.app.Notification$Builder,boolean):366 -> scheduleNotification
+    7:11:int scheduleNotification(android.app.Notification$Builder,boolean):367:371 -> scheduleNotification
+    1:3:void setNotificationColor(android.app.Notification$Builder,int):972:974 -> setNotificationColor
+    1:2:void setNotificationGroupAlertBehavior(android.app.Notification$Builder,int):984:985 -> setNotificationGroupAlertBehavior
+    1:4:void setNotificationIcon(android.app.Notification$Builder,java.lang.String,java.lang.String):906:909 -> setNotificationIcon
+    5:5:void setNotificationIcon(android.app.Notification$Builder,java.lang.String,java.lang.String):907:907 -> setNotificationIcon
+    1:1:void setNotificationUsesChronometer(android.app.Notification$Builder,boolean):980:980 -> setNotificationUsesChronometer
+    1:9:void setupBigPictureStyle(android.app.Notification$Builder,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean):914:922 -> setupBigPictureStyle
+    1:17:void showNotificationSettings(java.lang.String):1065:1081 -> showNotificationSettings
+com.unity.androidnotifications.UnityNotificationUtilities -> com.unity.androidnotifications.h:
+# {"id":"sourceFile","fileName":"UnityNotificationUtilities.java"}
+    byte[] UNITY_MAGIC_NUMBER -> a
+    byte[] UNITY_MAGIC_NUMBER_PARCELLED -> b
+    1:2:void <clinit>():50:51 -> <clinit>
+    1:5:int findResourceIdInContextByName(android.content.Context,java.lang.String):63:67 -> a
+    6:52:boolean serializeNotificationCustom(android.app.Notification,java.io.DataOutputStream):140:186 -> a
+    53:58:void serializeString(java.io.DataOutputStream,java.lang.String):192:197 -> a
+    59:59:void serializeString(java.io.DataOutputStream,java.lang.String):193:193 -> a
+    60:70:byte[] serializeParcelable(android.os.Parcelable):203:213 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Intent;)[B"}
+    71:71:byte[] serializeParcelable(android.os.Parcelable):211:211 -> a
+    72:83:java.lang.Object deserializeNotification(android.content.Context,android.content.SharedPreferences):220:231 -> a
+    84:85:java.lang.Object deserializeNotification(android.content.Context,byte[]):238:239 -> a
+    86:97:android.app.Notification deserializeNotificationParcelable(java.io.DataInputStream):270:281 -> a
+    86:97:java.lang.Object deserializeNotification(android.content.Context,byte[]):240 -> a
+    98:98:android.app.Notification deserializeNotificationParcelable(java.io.DataInputStream):279:279 -> a
+    98:98:java.lang.Object deserializeNotification(android.content.Context,byte[]):240 -> a
+    99:99:java.lang.Object deserializeNotification(android.content.Context,byte[]):243:243 -> a
+    100:218:android.app.Notification$Builder deserializeNotificationCustom(android.content.Context,java.io.DataInputStream):289:407 -> a
+    100:218:java.lang.Object deserializeNotification(android.content.Context,byte[]):244 -> a
+    219:219:android.app.Notification$Builder deserializeNotificationCustom(android.content.Context,java.io.DataInputStream):405:405 -> a
+    219:219:java.lang.Object deserializeNotification(android.content.Context,byte[]):244 -> a
+    220:275:android.app.Notification$Builder deserializedFromOldIntent(android.content.Context,byte[]):415:470 -> a
+    220:275:java.lang.Object deserializeNotification(android.content.Context,byte[]):246 -> a
+    276:276:android.app.Notification$Builder deserializedFromOldIntent(android.content.Context,byte[]):468:468 -> a
+    276:276:java.lang.Object deserializeNotification(android.content.Context,byte[]):246 -> a
+    277:279:boolean readAndCheckMagicNumber(java.io.DataInputStream,byte[]):254:256 -> a
+    280:300:android.os.Parcelable deserializeParcelable(java.io.DataInputStream):488:508 -> a
+    301:301:android.os.Parcelable deserializeParcelable(java.io.DataInputStream):506:506 -> a
+    302:302:android.os.Parcelable deserializeParcelable(java.io.DataInputStream):494:494 -> a
+    303:330:java.lang.Class getOpenAppActivity(android.content.Context):521:548 -> a
+    331:331:boolean isUnityActivity(java.lang.String):592:592 -> a
+    331:331:java.lang.Class getOpenAppActivity(android.content.Context):548 -> a
+    332:367:java.lang.Class getOpenAppActivity(android.content.Context):550:585 -> a
+    368:368:java.lang.Class getOpenAppActivity(android.content.Context):583:583 -> a
+    369:378:android.app.Notification$Builder recoverBuilder(android.content.Context,android.app.Notification):597:606 -> a
+    379:379:android.app.Notification$Builder recoverBuilder(android.content.Context,android.app.Notification):604:604 -> a
+    380:415:android.app.Notification$Builder recoverBuilderCustom(android.content.Context,android.app.Notification):613:648 -> a
+    380:415:android.app.Notification$Builder recoverBuilder(android.content.Context,android.app.Notification):609 -> a
+    1:8:java.lang.String deserializeString(java.io.DataInputStream):477:484 -> b
+    9:9:java.lang.String deserializeString(java.io.DataInputStream):483:483 -> b
