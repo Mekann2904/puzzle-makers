@@ -84,6 +84,12 @@ public class TilesGen : MonoBehaviour
                     pixelsPerUnit
                 );
                 sr.sprite = sprite;
+
+                // 追加: Collider2DとMouseActionをアタッチ
+                BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
+                collider.size = sr.bounds.size;
+                go.AddComponent<MouseAction>();
+
                 mTileObjects.Add(go);
             }
         }
