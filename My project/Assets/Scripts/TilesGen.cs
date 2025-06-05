@@ -46,6 +46,13 @@ public class TilesGen : MonoBehaviour
         float worldTileWidth = (float)mTextureOriginal.width / col / pixelsPerUnit;
         float worldTileHeight = (float)mTextureOriginal.height / row / pixelsPerUnit;
 
+        // 画像全体の幅・高さ（ワールド単位）
+        float totalWidth = worldTileWidth * col;
+        float totalHeight = worldTileHeight * row;
+
+        // 画像の左上が中央に来るようにオフセット
+        Vector3 offset = new Vector3(-totalWidth / 2f + worldTileWidth / 2f, totalHeight / 2f - worldTileHeight / 2f, 0);
+
         // 生成されたタイルをシーンに配置
         for (int i = 0; i < row; i++)
         {
@@ -58,8 +65,8 @@ public class TilesGen : MonoBehaviour
                 GameObject go = new GameObject($"Tile_{i}_{j}");
                 go.transform.parent = this.transform;
 
-                // タイルの基本位置を左上基準で設定
-                go.transform.position = new Vector3(j * worldTileWidth, -i * worldTileHeight, 0);
+                // ピースの配置座標を修正（オフセットを加える）
+                go.transform.position = new Vector3(j * worldTileWidth, -i * worldTileHeight, 0) + offset;
 
                 SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
                  
