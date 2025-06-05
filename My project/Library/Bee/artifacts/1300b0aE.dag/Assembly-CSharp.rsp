@@ -460,6 +460,7 @@
 -analyzer:"/Applications/Unity/Hub/Editor/6000.1.0f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/BezierCurve.cs"
 "Assets/Scripts/BoardGen.cs"
+"Assets/Scripts/MouseAction.cs"
 "Assets/Scripts/TemplateBezierCurve.cs"
 "Assets/Scripts/Tile.cs"
 "Assets/Scripts/TilesGen.cs"
