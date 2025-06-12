@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// ジグソーパズルの1ピース（タイル）を表現するクラス
@@ -51,14 +52,53 @@ public class Tile
 
     public void Apply()
     {
-        // 最終的なパディングに基づいてテクスチャを生成
         finalCut = new Texture2D(tileWidth + padL + padR, tileHeight + padT + padB, TextureFormat.ARGB32, false);
         var clear = new Color(0, 0, 0, 0);
-        for (int i = 0; i < finalCut.width; ++i)
-            for (int j = 0; j < finalCut.height; ++j)
-                finalCut.SetPixel(i, j, clear);
-
-        FloodFillInitAndFill();
+        // 輪郭点リストを作成（端点重複を避けて連結）
+        var up = CreateCurve(Direction.UP, mCurveTypes[(int)Direction.UP]);
+        var right = CreateCurve(Direction.RIGHT, mCurveTypes[(int)Direction.RIGHT]);
+        var down = CreateCurve(Direction.DOWN, mCurveTypes[(int)Direction.DOWN]);
+        var left = CreateCurve(Direction.LEFT, mCurveTypes[(int)Direction.LEFT]);
+        List<Vector2> contour = new List<Vector2>();
+        contour.AddRange(up);
+        contour.AddRange(right.Skip(1));
+        contour.AddRange(down.Skip(1));
+        contour.AddRange(left.Skip(1));
+        for (int x = 0; x < finalCut.width; ++x)
+        {
+            for (int y = 0; y < finalCut.height; ++y)
+            {
+                Vector2 p = new Vector2(x, y);
+                if (!IsPointInPolygon(p, contour))
+                {
+                    // アンチエイリアス処理: 輪郭からの距離が近い場合は半透明で描画
+                    float minDist = float.MaxValue;
+                    foreach (var pt in contour)
+                    {
+                        float dist = Vector2.Distance(p, pt);
+                        if (dist < minDist) minDist = dist;
+                    }
+                    if (minDist < 1.5f) {
+                        // 距離が0ならα=1, 1.5ならα=0
+                        float alpha = Mathf.Clamp01(1.5f - minDist) / 1.5f;
+                        Color c = clear;
+                        c.a = alpha;
+                        finalCut.SetPixel(x, y, c);
+                    } else {
+                        finalCut.SetPixel(x, y, clear);
+                    }
+                }
+                else
+                {
+                    int px = x - padL + xIndex * this.tileWidth;
+                    int py = y - padB + yIndexFromBottom * this.tileHeight;
+                    if (px >= 0 && px < mOriginalTexture.width && py >= 0 && py < mOriginalTexture.height)
+                        finalCut.SetPixel(x, y, mOriginalTexture.GetPixel(px, py));
+                    else
+                        finalCut.SetPixel(x, y, clear);
+                }
+            }
+        }
         finalCut.Apply();
     }
 
@@ -129,7 +169,7 @@ public class Tile
     public List<Vector2> CreateCurve(Direction dir, PosNegType type)
     {
         // 0-1正規化のベジェ曲線
-        List<Vector2> pts = new List<Vector2>(BezierCurve.PointList2(TemplateBezierCurve.templateControlPoints, 0.01f));
+        List<Vector2> pts = new List<Vector2>(BezierCurve.PointList2(TemplateBezierCurve.templateControlPoints, 0.001f));
         float w = this.tileWidth, h = this.tileHeight;
         float padL = this.padL, padT = this.padT, padR = this.padR, padB = this.padB;
 
@@ -173,5 +213,19 @@ public class Tile
                 break;
         }
         return pts;
+    }
+
+    // 多角形内判定（射影法）
+    bool IsPointInPolygon(Vector2 p, List<Vector2> poly)
+    {
+        int n = poly.Count;
+        bool inside = false;
+        for (int i = 0, j = n - 1; i < n; j = i++)
+        {
+            if (((poly[i].y > p.y) != (poly[j].y > p.y)) &&
+                (p.x < (poly[j].x - poly[i].x) * (p.y - poly[i].y) / (poly[j].y - poly[i].y + 1e-6f) + poly[i].x))
+                inside = !inside;
+        }
+        return inside;
     }
 }
