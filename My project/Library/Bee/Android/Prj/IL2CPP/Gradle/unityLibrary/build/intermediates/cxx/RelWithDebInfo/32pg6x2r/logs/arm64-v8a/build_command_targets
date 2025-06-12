@@ -1,5 +1,0 @@
-/Applications/Unity/Hub/Editor/6000.1.0f1/PlaybackEngines/AndroidPlayer/SDK/cmake/3.22.1/bin/ninja \
-  -C \
-  "/Users/mekann/github/puzzle-makers/My project/.utmp/RelWithDebInfo/32pg6x2r/arm64-v8a" \
-  game \
-  swappywrapper
