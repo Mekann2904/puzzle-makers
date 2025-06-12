@@ -35,6 +35,7 @@ public class MouseAction : MonoBehaviour
             if (snappedPieces == totalPieces)
             {
                 Debug.Log("Puzzle Completed!");
+                PuzzleCompletionNotifier.NotifyClear();
             }
         }
     }

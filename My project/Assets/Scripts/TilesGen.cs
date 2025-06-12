@@ -15,6 +15,7 @@ public class TilesGen : MonoBehaviour
 
     private BoardGen mBoardGen = new BoardGen();
     private List<GameObject> mTileObjects = new List<GameObject>();
+    private GameObject frameObject;
 
     void Start()
     {
@@ -51,6 +52,19 @@ public class TilesGen : MonoBehaviour
         // 画像全体の幅・高さ（ワールド単位）
         float totalWidth = worldTileWidth * col;
         float totalHeight = worldTileHeight * row;
+
+        // 枠の生成
+        if (frameObject != null) Destroy(frameObject);
+        frameObject = new GameObject("PuzzleFrame");
+        frameObject.transform.parent = this.transform;
+        frameObject.transform.position = Vector3.zero;
+        SpriteRenderer frameSr = frameObject.AddComponent<SpriteRenderer>();
+        Sprite frameSprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
+        frameSr.sprite = frameSprite;
+        frameSr.drawMode = SpriteDrawMode.Sliced;
+        frameSr.size = new Vector2(totalWidth + 0.1f, totalHeight + 0.1f);
+        frameSr.color = new Color(0.9f, 0.85f, 0.7f, 1f);
+        frameSr.sortingOrder = -1;
 
         // 画像の左上が中央に来るようにオフセット
         Vector3 offset = new Vector3(-totalWidth / 2f + worldTileWidth / 2f, totalHeight / 2f - worldTileHeight / 2f, 0);
