@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MouseAction : MonoBehaviour
 {
-    public static int totalPieces = 0;
-    public static int snappedPieces = 0;
 
     private bool isDragging = false;
     private Vector3 offset;
@@ -19,7 +17,7 @@ public class MouseAction : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-        totalPieces++;
+        PuzzleManager.RegisterPiece(this);
     }
 
     void OnMouseDown()
@@ -40,13 +38,9 @@ public class MouseAction : MonoBehaviour
             transform.position = correctPosition;
             snapped = true;
             if (col != null) col.enabled = false; // スナップ後は掴めないように
-            snappedPieces++;
-            if (snappedPieces == totalPieces)
-            {
-                Debug.Log("Puzzle Completed!");
-                PuzzleCompletionNotifier.NotifyClear();
-            }
         }
+
+        PuzzleManager.CheckCompletion();
     }
 
     void Update()

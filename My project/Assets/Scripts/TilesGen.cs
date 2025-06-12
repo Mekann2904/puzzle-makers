@@ -30,8 +30,6 @@ public class TilesGen : MonoBehaviour
             if (obj != null) Destroy(obj);
         }
         mTileObjects.Clear();
-        MouseAction.totalPieces = 0;
-        MouseAction.snappedPieces = 0;
 
         // 画像の読み込み
         Texture2D mTextureOriginal = Resources.Load<Texture2D>(imageFilename);
