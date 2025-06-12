@@ -68,6 +68,19 @@ public class BoardGen
                 tiles.Add(tile);
             }
         }
+
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                int idx = i * col + j;
+                Tile tile = tiles[idx];
+                tile.neighborUp = (i > 0) ? tiles[(i - 1) * col + j] : null;
+                tile.neighborDown = (i < row - 1) ? tiles[(i + 1) * col + j] : null;
+                tile.neighborLeft = (j > 0) ? tiles[i * col + (j - 1)] : null;
+                tile.neighborRight = (j < col - 1) ? tiles[i * col + (j + 1)] : null;
+            }
+        }
     }
 
     private static Tile.PosNegType RandomPosNeg()

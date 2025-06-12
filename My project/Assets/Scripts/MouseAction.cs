@@ -12,6 +12,10 @@ public class MouseAction : MonoBehaviour
     [HideInInspector]
     public float snapDistance = 0.5f;
     private bool snapped = false;
+    [HideInInspector]
+    public Rect cellRect;
+    [HideInInspector]
+    public Vector3 cellCenter;
 
     void Start()
     {
@@ -33,13 +37,12 @@ public class MouseAction : MonoBehaviour
     {
         isDragging = false;
         if (sr != null) sr.sortingOrder = 0;
-        if (!snapped && Vector3.Distance(transform.position, correctPosition) <= snapDistance)
+        if (!snapped && cellRect.Contains(new Vector2(transform.position.x, transform.position.y)))
         {
-            transform.position = correctPosition;
+            transform.position = cellCenter;
             snapped = true;
             if (col != null) col.enabled = false; // スナップ後は掴めないように
         }
-
         PuzzleManager.CheckCompletion();
     }
 

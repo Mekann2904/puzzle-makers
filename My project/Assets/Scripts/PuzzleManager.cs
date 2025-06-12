@@ -37,7 +37,7 @@ public class PuzzleManager : MonoBehaviour
         if (instance == null) return;
         foreach (var p in instance.pieces)
         {
-            if (Vector3.Distance(p.transform.position, p.correctPosition) > p.snapDistance * 0.5f)
+            if (!p.cellRect.Contains(new Vector2(p.transform.position.x, p.transform.position.y)))
             {
                 return;
             }

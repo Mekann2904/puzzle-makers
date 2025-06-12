@@ -51,11 +51,14 @@ public class TilesGen : MonoBehaviour
         float totalWidth = worldTileWidth * col;
         float totalHeight = worldTileHeight * row;
 
+        // offsetを画面中央（原点）に揃える
+        Vector3 offset = Vector3.zero;
+
         // 枠の生成
         if (frameObject != null) Destroy(frameObject);
         frameObject = new GameObject("PuzzleFrame");
         frameObject.transform.parent = this.transform;
-        frameObject.transform.position = Vector3.zero;
+        frameObject.transform.position = offset;
         SpriteRenderer frameSr = frameObject.AddComponent<SpriteRenderer>();
         Sprite frameSprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
         frameSr.sprite = frameSprite;
@@ -63,9 +66,6 @@ public class TilesGen : MonoBehaviour
         frameSr.size = new Vector2(totalWidth + 0.1f, totalHeight + 0.1f);
         frameSr.color = new Color(0.9f, 0.85f, 0.7f, 1f);
         frameSr.sortingOrder = -1;
-
-        // 画像の左上が中央に来るようにオフセット
-        Vector3 offset = new Vector3(-totalWidth / 2f + worldTileWidth / 2f, totalHeight / 2f - worldTileHeight / 2f, 0);
 
         // 生成されたタイルをシーンに配置
         for (int i = 0; i < row; i++)
@@ -76,35 +76,55 @@ public class TilesGen : MonoBehaviour
                 Tile tile = mBoardGen.tiles[idx];
                 Texture2D finalCut = tile.finalCut;
 
+                // ベース画像左上座標（ピクセル単位）
+                float baseX = j * tile.tileWidth;
+                float baseY = i * tile.tileHeight;
+
+                // ワールド座標に変換
+                float x = -((float)mTextureOriginal.width / 2f) + baseX + tile.tileWidth / 2f;
+                float y = ((float)mTextureOriginal.height / 2f) - baseY - tile.tileHeight / 2f;
+
+                // パディング分だけ中心をずらす
+                float padOffsetX = ((float)tile.padL - (float)tile.padR) / 2f;
+                float padOffsetY = ((float)tile.padB - (float)tile.padT) / 2f;
+                x += padOffsetX;
+                y += padOffsetY;
+
+                x /= pixelsPerUnit;
+                y /= pixelsPerUnit;
+
+                Vector3 piecePos = new Vector3(x, y, 0);
                 GameObject go = new GameObject($"Tile_{i}_{j}");
                 go.transform.parent = this.transform;
-
-                // ピースの配置座標を修正（オフセットを加える）
-                go.transform.position = new Vector3(j * worldTileWidth, -i * worldTileHeight, 0) + offset;
+                go.transform.position = piecePos;
 
                 SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
-                 
-                // 【重要】スプライトのピボット（中心点）を、タイルの「左上」に設定します。
-                // これにより、GameObjectのTransform位置が、ピース画像の左上端と正確に一致します。
-                // 元のコードではピボットが左下になっていたため、位置がずれていました。
-                float pivotX = (float)tile.padL / finalCut.width;
-                // Yのピボットをテクスチャの下から「ベース画像の高さ + 下パディング」の位置に設定 = ベース画像の左上
-                float pivotY = (float)(tile.padB + tile.tileHeight) / finalCut.height;
-
+                sr.sortingOrder = (row - i) * col + (col - j); // 上・左ほど手前
                 Sprite sprite = Sprite.Create(
                     finalCut,
                     new Rect(0, 0, finalCut.width, finalCut.height),
-                    new Vector2(pivotX, pivotY),
+                    new Vector2(0.5f, 0.5f),
                     pixelsPerUnit
                 );
                 sr.sprite = sprite;
 
-                // 追加: Collider2DとMouseActionをアタッチ
                 BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
                 collider.size = sr.bounds.size;
                 MouseAction action = go.AddComponent<MouseAction>();
                 action.correctPosition = go.transform.position;
-                action.snapDistance = Mathf.Min(worldTileWidth, worldTileHeight) * 0.5f; // ゆとりをもったスナップ距離
+                action.snapDistance = Mathf.Min(tile.tileWidth, tile.tileHeight) / pixelsPerUnit * 0.5f;
+
+                float pieceWidth = (float)finalCut.width / pixelsPerUnit;
+                float pieceHeight = (float)finalCut.height / pixelsPerUnit;
+                Rect cellRect = new Rect(
+                    piecePos.x - pieceWidth / 2f,
+                    piecePos.y - pieceHeight / 2f,
+                    pieceWidth,
+                    pieceHeight
+                );
+                Vector3 cellCenter = piecePos;
+                action.cellRect = cellRect;
+                action.cellCenter = cellCenter;
 
                 mTileObjects.Add(go);
             }
