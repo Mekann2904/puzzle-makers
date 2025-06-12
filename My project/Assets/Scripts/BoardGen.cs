@@ -82,6 +82,11 @@ public class BoardGen
         }
 
         // 近傍情報を設定した後にピース画像を生成
+        // 一度全ピースを生成した後、隣接ピースの画像を参照して再生成する
+        foreach (var tile in tiles)
+        {
+            tile.Apply();
+        }
         foreach (var tile in tiles)
         {
             tile.Apply();

@@ -76,7 +76,7 @@ public class Tile
             {
                 // --- パディング部分の合成 ---
                 // 左パディング
-                if (x < padL && neighborLeft != null)
+                if (x < padL && neighborLeft != null && neighborLeft.finalCut != null)
                 {
                     int srcX = neighborLeft.finalCut.width - padR + x;
                     int srcY = y;
@@ -87,7 +87,7 @@ public class Tile
                     }
                 }
                 // 右パディング
-                if (x >= padL + tileWidth && neighborRight != null)
+                if (x >= padL + tileWidth && neighborRight != null && neighborRight.finalCut != null)
                 {
                     int srcX = x - (padL + tileWidth) + padL;
                     int srcY = y;
@@ -98,7 +98,7 @@ public class Tile
                     }
                 }
                 // 上パディング
-                if (y >= padB + tileHeight && neighborUp != null)
+                if (y >= padB + tileHeight && neighborUp != null && neighborUp.finalCut != null)
                 {
                     int srcX = x;
                     int srcY = y - (padB + tileHeight) + padB;
@@ -109,7 +109,7 @@ public class Tile
                     }
                 }
                 // 下パディング
-                if (y < padB && neighborDown != null)
+                if (y < padB && neighborDown != null && neighborDown.finalCut != null)
                 {
                     int srcX = x;
                     int srcY = neighborDown.finalCut.height - padT + y;
