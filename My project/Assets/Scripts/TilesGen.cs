@@ -29,6 +29,8 @@ public class TilesGen : MonoBehaviour
             if (obj != null) Destroy(obj);
         }
         mTileObjects.Clear();
+        MouseAction.totalPieces = 0;
+        MouseAction.snappedPieces = 0;
 
         // 画像の読み込み
         Texture2D mTextureOriginal = Resources.Load<Texture2D>(imageFilename);
@@ -88,10 +90,21 @@ public class TilesGen : MonoBehaviour
                 // 追加: Collider2DとMouseActionをアタッチ
                 BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
                 collider.size = sr.bounds.size;
-                go.AddComponent<MouseAction>();
+                MouseAction action = go.AddComponent<MouseAction>();
+                action.correctPosition = go.transform.position;
 
                 mTileObjects.Add(go);
             }
+        }
+
+        // ランダムにピースを散らす
+        foreach (var obj in mTileObjects)
+        {
+            Vector3 randomOffset = new Vector3(
+                Random.Range(-totalWidth, totalWidth),
+                Random.Range(-totalHeight, totalHeight),
+                0);
+            obj.transform.position += randomOffset;
         }
     }
 
