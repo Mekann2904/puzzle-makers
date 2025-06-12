@@ -9,7 +9,8 @@ public class MouseAction : MonoBehaviour
     private Vector3 offset;
     [HideInInspector]
     public Vector3 correctPosition;
-    private const float snapDistance = 0.5f;
+    [HideInInspector]
+    public float snapDistance = 0.5f;
     private bool snapped = false;
 
     void Start()
@@ -19,6 +20,7 @@ public class MouseAction : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (snapped) return; // 既に配置済みならドラッグ不可
         isDragging = true;
         Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offset = transform.position - new Vector3(mouseWorld.x, mouseWorld.y, transform.position.z);
@@ -27,7 +29,7 @@ public class MouseAction : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
-        if (!snapped && Vector3.Distance(transform.position, correctPosition) < snapDistance)
+        if (!snapped && Vector3.Distance(transform.position, correctPosition) <= snapDistance)
         {
             transform.position = correctPosition;
             snapped = true;
