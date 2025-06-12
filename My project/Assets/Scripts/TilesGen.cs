@@ -106,7 +106,7 @@ public class TilesGen : MonoBehaviour
                 collider.size = sr.bounds.size;
                 MouseAction action = go.AddComponent<MouseAction>();
                 action.correctPosition = go.transform.position;
-                action.snapDistance = Mathf.Min(worldTileWidth, worldTileHeight) * 0.3f;
+                action.snapDistance = Mathf.Min(worldTileWidth, worldTileHeight) * 0.5f; // ゆとりをもったスナップ距離
 
                 mTileObjects.Add(go);
             }
@@ -116,8 +116,8 @@ public class TilesGen : MonoBehaviour
         float scatterRadius = Mathf.Max(totalWidth, totalHeight) * 0.8f;
         foreach (var obj in mTileObjects)
         {
-            Vector2 dir = Random.insideUnitCircle.normalized;
-            Vector3 randomOffset = new Vector3(dir.x, dir.y, 0) * scatterRadius;
+            Vector2 rnd = Random.insideUnitCircle * scatterRadius; // 画面外に出過ぎないよう内側で散らす
+            Vector3 randomOffset = new Vector3(rnd.x, rnd.y, 0);
             obj.transform.position += randomOffset;
         }
     }
