@@ -51,7 +51,7 @@ public class BoardGen
                 // 端のタイルが半端なサイズにならないように調整
                 int tileWidth = (j == col - 1) ? baseTexture.width - baseTileWidth * (col - 1) : baseTileWidth;
                 int tileHeight = (i == row - 1) ? baseTexture.height - baseTileHeight * (row - 1) : baseTileHeight;
-                 
+
                 int yIndexFromBottom = row - 1 - i;
 
                 // Tileコンストラクタの呼び出しを修正
@@ -64,7 +64,6 @@ public class BoardGen
                 tile.SetCurveType(Tile.Direction.LEFT, InvertCurve(horizontalCurves[i, j]));
                 tile.SetCurveType(Tile.Direction.RIGHT, horizontalCurves[i, j + 1]);
 
-                tile.Apply();
                 tiles.Add(tile);
             }
         }
@@ -80,6 +79,17 @@ public class BoardGen
                 tile.neighborLeft = (j > 0) ? tiles[i * col + (j - 1)] : null;
                 tile.neighborRight = (j < col - 1) ? tiles[i * col + (j + 1)] : null;
             }
+        }
+
+        // 近傍情報を設定した後にピース画像を生成
+        // 一度全ピースを生成した後、隣接ピースの画像を参照して再生成する
+        foreach (var tile in tiles)
+        {
+            tile.Apply();
+        }
+        foreach (var tile in tiles)
+        {
+            tile.Apply();
         }
     }
 
