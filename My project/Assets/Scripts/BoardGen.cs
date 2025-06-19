@@ -82,6 +82,12 @@ public class BoardGen
         }
 
         // 近隣情報を設定した後でテクスチャを生成
+        // 一度全ピースを生成した後、再度Applyを実行して
+        // すべての隣接ピースのテクスチャが揃った状態で調整する
+        foreach (var tile in tiles)
+        {
+            tile.Apply();
+        }
         foreach (var tile in tiles)
         {
             tile.Apply();
