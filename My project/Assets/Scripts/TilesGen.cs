@@ -42,14 +42,12 @@ public class TilesGen : MonoBehaviour
         // パズルピースの生成
         mBoardGen.CreateJigsawTiles(mTextureOriginal, row, col);
 
-        // ワールドでのタイルの基本サイズ
+        // ワールドでのサイズ計算に使用する係数
         float pixelsPerUnit = 100f;
-        float worldTileWidth = (float)mTextureOriginal.width / col / pixelsPerUnit;
-        float worldTileHeight = (float)mTextureOriginal.height / row / pixelsPerUnit;
 
         // 画像全体の幅・高さ（ワールド単位）
-        float totalWidth = worldTileWidth * col;
-        float totalHeight = worldTileHeight * row;
+        float totalWidth = (float)mTextureOriginal.width / pixelsPerUnit;
+        float totalHeight = (float)mTextureOriginal.height / pixelsPerUnit;
 
         // offsetを画面中央（原点）に揃える
         Vector3 offset = Vector3.zero;
@@ -67,6 +65,22 @@ public class TilesGen : MonoBehaviour
         frameSr.color = new Color(0.9f, 0.85f, 0.7f, 1f);
         frameSr.sortingOrder = -1;
 
+        // 各列と行の開始位置を計算
+        float[] colOffsets = new float[col];
+        float[] rowOffsets = new float[row];
+        float tmp = 0f;
+        for (int j = 0; j < col; j++)
+        {
+            colOffsets[j] = tmp;
+            tmp += mBoardGen.tiles[j].tileWidth;
+        }
+        tmp = 0f;
+        for (int i = 0; i < row; i++)
+        {
+            rowOffsets[i] = tmp;
+            tmp += mBoardGen.tiles[i * col].tileHeight;
+        }
+
         // 生成されたタイルをシーンに配置
         for (int i = 0; i < row; i++)
         {
@@ -77,8 +91,8 @@ public class TilesGen : MonoBehaviour
                 Texture2D finalCut = tile.finalCut;
 
                 // ベース画像左上座標（ピクセル単位）
-                float baseX = j * tile.tileWidth;
-                float baseY = i * tile.tileHeight;
+                float baseX = colOffsets[j];
+                float baseY = rowOffsets[i];
 
                 // ワールド座標に変換
                 float x = -((float)mTextureOriginal.width / 2f) + baseX + tile.tileWidth / 2f;
