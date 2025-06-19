@@ -77,8 +77,12 @@ public class TilesGen : MonoBehaviour
                 Texture2D finalCut = tile.finalCut;
 
                 // ベース画像左上座標（ピクセル単位）
-                float baseX = j * tile.tileWidth;
-                float baseY = i * tile.tileHeight;
+                // ピースごとのtileWidth/Heightを使うと端のタイルで位置誤差が生じるため
+                // 元画像を均等分割した基準サイズで位置を計算する
+                float baseTileWidth = (float)mTextureOriginal.width / col;
+                float baseTileHeight = (float)mTextureOriginal.height / row;
+                float baseX = j * baseTileWidth;
+                float baseY = i * baseTileHeight;
 
                 // ワールド座標に変換
                 float x = -((float)mTextureOriginal.width / 2f) + baseX + tile.tileWidth / 2f;
