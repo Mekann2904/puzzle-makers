@@ -68,6 +68,9 @@ public class TilesGen : MonoBehaviour
         frameSr.sortingOrder = -1;
 
         // 生成されたタイルをシーンに配置
+        int baseTileWidthPx = mTextureOriginal.width / col;
+        int baseTileHeightPx = mTextureOriginal.height / row;
+
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < col; j++)
@@ -77,8 +80,8 @@ public class TilesGen : MonoBehaviour
                 Texture2D finalCut = tile.finalCut;
 
                 // ベース画像左上座標（ピクセル単位）
-                float baseX = j * tile.tileWidth;
-                float baseY = i * tile.tileHeight;
+                float baseX = j * baseTileWidthPx;
+                float baseY = i * baseTileHeightPx;
 
                 // ワールド座標に変換
                 float x = -((float)mTextureOriginal.width / 2f) + baseX + tile.tileWidth / 2f;
@@ -87,8 +90,12 @@ public class TilesGen : MonoBehaviour
                 // パディング分だけ中心をずらす
                 float padOffsetX = ((float)tile.padL - (float)tile.padR) / 2f;
                 float padOffsetY = ((float)tile.padB - (float)tile.padT) / 2f;
-                x += padOffsetX;
-                y += padOffsetY;
+                // The pivot of the sprite is at the center of the final
+                // bounding box which includes padding. To align the original
+                // tile area correctly, move the pivot in the opposite
+                // direction of the padding difference.
+                x -= padOffsetX;
+                y -= padOffsetY;
 
                 x /= pixelsPerUnit;
                 y /= pixelsPerUnit;
