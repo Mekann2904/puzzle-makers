@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PuzzleCompletionNotifier : MonoBehaviour
 {
@@ -33,7 +34,13 @@ public class PuzzleCompletionNotifier : MonoBehaviour
         if (message != null)
         {
             message.gameObject.SetActive(true);
+            Invoke("GoToClearScene", 3f);
         }
+    }
+
+    private void GoToClearScene()
+    {
+        SceneManager.LoadScene("ClearScene");
     }
 
     public static void NotifyClear()
