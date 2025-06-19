@@ -87,8 +87,12 @@ public class TilesGen : MonoBehaviour
                 // パディング分だけ中心をずらす
                 float padOffsetX = ((float)tile.padL - (float)tile.padR) / 2f;
                 float padOffsetY = ((float)tile.padB - (float)tile.padT) / 2f;
-                x += padOffsetX;
-                y += padOffsetY;
+                // The pivot of the sprite is at the center of the final
+                // bounding box which includes padding. To align the original
+                // tile area correctly, move the pivot in the opposite
+                // direction of the padding difference.
+                x -= padOffsetX;
+                y -= padOffsetY;
 
                 x /= pixelsPerUnit;
                 y /= pixelsPerUnit;
