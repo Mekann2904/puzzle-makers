@@ -24,6 +24,12 @@ public class Tile
     private PosNegType[] mCurveTypes = new PosNegType[4];
     private int xIndex, yIndexFromBottom;
 
+    // 隣接ピース参照
+    public Tile neighborUp;
+    public Tile neighborDown;
+    public Tile neighborLeft;
+    public Tile neighborRight;
+
     // コンストラクタの引数をBoardGenの呼び出しと一致させる
     public Tile(Texture2D texture, int xIndex, int yIndexFromBottom, int tileWidth, int tileHeight, int padding)
     {
@@ -68,6 +74,52 @@ public class Tile
         {
             for (int y = 0; y < finalCut.height; ++y)
             {
+                // --- パディング部分の合成 ---
+                // 左パディング
+                if (x < padL && neighborLeft != null)
+                {
+                    int srcX = neighborLeft.finalCut.width - padR + x;
+                    int srcY = y;
+                    if (srcX >= 0 && srcX < neighborLeft.finalCut.width && srcY >= 0 && srcY < neighborLeft.finalCut.height)
+                    {
+                        finalCut.SetPixel(x, y, neighborLeft.finalCut.GetPixel(srcX, srcY));
+                        continue;
+                    }
+                }
+                // 右パディング
+                if (x >= padL + tileWidth && neighborRight != null)
+                {
+                    int srcX = x - (padL + tileWidth) + padL;
+                    int srcY = y;
+                    if (srcX >= 0 && srcX < neighborRight.finalCut.width && srcY >= 0 && srcY < neighborRight.finalCut.height)
+                    {
+                        finalCut.SetPixel(x, y, neighborRight.finalCut.GetPixel(srcX, srcY));
+                        continue;
+                    }
+                }
+                // 上パディング
+                if (y >= padB + tileHeight && neighborUp != null)
+                {
+                    int srcX = x;
+                    int srcY = y - (padB + tileHeight) + padB;
+                    if (srcX >= 0 && srcX < neighborUp.finalCut.width && srcY >= 0 && srcY < neighborUp.finalCut.height)
+                    {
+                        finalCut.SetPixel(x, y, neighborUp.finalCut.GetPixel(srcX, srcY));
+                        continue;
+                    }
+                }
+                // 下パディング
+                if (y < padB && neighborDown != null)
+                {
+                    int srcX = x;
+                    int srcY = neighborDown.finalCut.height - padT + y;
+                    if (srcX >= 0 && srcX < neighborDown.finalCut.width && srcY >= 0 && srcY < neighborDown.finalCut.height)
+                    {
+                        finalCut.SetPixel(x, y, neighborDown.finalCut.GetPixel(srcX, srcY));
+                        continue;
+                    }
+                }
+                // --- 通常処理 ---
                 Vector2 p = new Vector2(x, y);
                 if (!IsPointInPolygon(p, contour))
                 {
