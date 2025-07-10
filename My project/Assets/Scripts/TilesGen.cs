@@ -1,13 +1,22 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// BoardGenを使って画像を分割し、TileをSpriteとしてシーン上に並べて表示するスクリプト
+/// AI画像生成機能付き
 /// </summary>
 public class TilesGen : MonoBehaviour
 {
-    [Tooltip("Resourcesフォルダ内の画像ファイル名")]
+    [Header("画像設定")]
+    [Tooltip("Resourcesフォルダ内の画像ファイル名（AI生成を使わない場合）")]
     public string imageFilename = "sample";
+    [Tooltip("AIで画像を生成するかどうか")]
+    public bool useAIGeneration = true;
+    [Tooltip("AI生成する画像の説明")]
+    public string aiPrompt = "美しい風景画、詳細で鮮やかな色彩";
+    
+    [Header("パズル設定")]
     [Tooltip("行数")]
     public int row = 4;
     [Tooltip("列数")]
@@ -16,13 +25,68 @@ public class TilesGen : MonoBehaviour
     private BoardGen mBoardGen = new BoardGen();
     private List<GameObject> mTileObjects = new List<GameObject>();
     private GameObject frameObject;
+    private GeminiImageGenerator imageGenerator;
+    private bool isGenerating = false;
 
     void Start()
     {
-        LoadAndSplitImage();
+        // GeminiImageGeneratorコンポーネントを追加
+        imageGenerator = gameObject.GetComponent<GeminiImageGenerator>();
+        if (imageGenerator == null)
+        {
+            imageGenerator = gameObject.AddComponent<GeminiImageGenerator>();
+        }
+        
+        if (useAIGeneration)
+        {
+            StartCoroutine(GenerateAndLoadImage());
+        }
+        else
+        {
+            LoadAndSplitImage();
+        }
+    }
+
+    IEnumerator GenerateAndLoadImage()
+    {
+        if (isGenerating)
+        {
+            Debug.Log("画像生成中です...");
+            yield break;
+        }
+        
+        isGenerating = true;
+        Debug.Log("AI画像生成を開始: " + aiPrompt);
+        
+        yield return imageGenerator.GenerateImage(aiPrompt, (Texture2D generatedTexture) =>
+        {
+            isGenerating = false;
+            if (generatedTexture != null)
+            {
+                Debug.Log("AI画像生成完了。パズルを作成します。");
+                LoadAndSplitImage(generatedTexture);
+            }
+            else
+            {
+                Debug.LogError("AI画像生成に失敗しました。デフォルト画像を使用します。");
+                LoadAndSplitImage();
+            }
+        });
     }
 
     void LoadAndSplitImage()
+    {
+        // デフォルト画像の読み込み
+        Texture2D mTextureOriginal = Resources.Load<Texture2D>(imageFilename);
+        if (mTextureOriginal == null)
+        {
+            Debug.LogError($"画像が見つかりません: {imageFilename}。Resourcesフォルダ内にあるか確認してください。");
+            return;
+        }
+        LoadAndSplitImage(mTextureOriginal);
+    }
+
+    void LoadAndSplitImage(Texture2D mTextureOriginal)
     {
         // 既存のオブジェクトをクリア
         foreach (var obj in mTileObjects)
@@ -31,11 +95,9 @@ public class TilesGen : MonoBehaviour
         }
         mTileObjects.Clear();
 
-        // 画像の読み込み
-        Texture2D mTextureOriginal = Resources.Load<Texture2D>(imageFilename);
         if (mTextureOriginal == null)
         {
-            Debug.LogError($"画像が見つかりません: {imageFilename}。Resourcesフォルダ内にあるか確認してください。");
+            Debug.LogError("画像がnullです。");
             return;
         }
 
@@ -152,7 +214,30 @@ public class TilesGen : MonoBehaviour
         // スペースキーで再生成
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            LoadAndSplitImage();
+            if (useAIGeneration)
+            {
+                StartCoroutine(GenerateAndLoadImage());
+            }
+            else
+            {
+                LoadAndSplitImage();
+            }
+        }
+        
+        // Gキーでデフォルト画像とAI生成画像を切り替え
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            useAIGeneration = !useAIGeneration;
+            Debug.Log("AI生成モード: " + (useAIGeneration ? "ON" : "OFF"));
+            
+            if (useAIGeneration)
+            {
+                StartCoroutine(GenerateAndLoadImage());
+            }
+            else
+            {
+                LoadAndSplitImage();
+            }
         }
     }
 }
