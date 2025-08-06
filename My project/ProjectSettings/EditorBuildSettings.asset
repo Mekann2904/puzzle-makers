@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/titlescene.unity
     guid: 5260257213dd84db988d3da559094d83
   - enabled: 1
+    path: Assets/Scenes/SelectScene.unity
+    guid: 86366b5b1b70242fe8721b340fef5492
+  - enabled: 1
+    path: Assets/LoadingScene.unity
+    guid: db111dba6ca864815b60de45ee6d33f2
+  - enabled: 1
     path: Assets/TilesRoot.unity
     guid: 0cc1c5cd0102c4940a9bee052915be4c
   - enabled: 1

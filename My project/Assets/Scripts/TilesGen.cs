@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // UIコンポーネントを使用するために必要
 
 /// <summary>
-/// BoardGenを使って画像を分割し、TileをSpriteとしてシーン上に並べて表示するスクリプト
-/// AI画像生成機能付き
+/// BoardGenを使って画像を分割し、TileをSpriteとしてシーン上に並べて表示するスクリプト。
+/// LevelManagerから渡された画像を元にパズルを生成します。
 /// </summary>
 public class TilesGen : MonoBehaviour
 {
     [Header("画像設定")]
-    [Tooltip("Resourcesフォルダ内の画像ファイル名（AI生成を使わない場合）")]
+    [Tooltip("Resourcesフォルダ内の画像ファイル名（AI生成を使わない、または失敗した場合のデフォルト）")]
     public string imageFilename = "sample";
-    [Tooltip("AIで画像を生成するかどうか")]
-    public bool useAIGeneration = true;
-    [Tooltip("AI生成する画像の説明")]
-    public string aiPrompt = "美しい風景画、詳細で鮮やかな色彩";
-    
+
     [Header("パズル設定")]
     [Tooltip("行数")]
     public int row = 4;
@@ -24,54 +21,27 @@ public class TilesGen : MonoBehaviour
 
     private BoardGen mBoardGen = new BoardGen();
     private List<GameObject> mTileObjects = new List<GameObject>();
-    private GameObject frameObject;
-    private GeminiImageGenerator imageGenerator;
-    private bool isGenerating = false;
+    private GameObject hintCanvasObject; // パネルとヒントを管理するCanvas用の変数
 
     void Start()
     {
-        // GeminiImageGeneratorコンポーネントを追加
-        imageGenerator = gameObject.GetComponent<GeminiImageGenerator>();
-        if (imageGenerator == null)
+        // LevelManagerに設定された行数と列数を読み込む
+        this.row = LevelManager.selectedRows;
+        this.col = LevelManager.selectedCols;
+
+        // LevelManagerにAIが生成した画像があるか確認
+        if (LevelManager.generatedPuzzleImage != null)
         {
-            imageGenerator = gameObject.AddComponent<GeminiImageGenerator>();
-        }
-        
-        if (useAIGeneration)
-        {
-            StartCoroutine(GenerateAndLoadImage());
+            // あれば、その画像を使ってパズルを生成
+            Debug.Log("生成済みのAI画像を元にパズルを作成します。");
+            LoadAndSplitImage(LevelManager.generatedPuzzleImage);
         }
         else
         {
+            // なければ（AIオフまたは生成失敗）、デフォルト画像でパズルを生成
+            Debug.Log("デフォルト画像を元にパズルを作成します。");
             LoadAndSplitImage();
         }
-    }
-
-    IEnumerator GenerateAndLoadImage()
-    {
-        if (isGenerating)
-        {
-            Debug.Log("画像生成中です...");
-            yield break;
-        }
-        
-        isGenerating = true;
-        Debug.Log("AI画像生成を開始: " + aiPrompt);
-        
-        yield return imageGenerator.GenerateImage(aiPrompt, (Texture2D generatedTexture) =>
-        {
-            isGenerating = false;
-            if (generatedTexture != null)
-            {
-                Debug.Log("AI画像生成完了。パズルを作成します。");
-                LoadAndSplitImage(generatedTexture);
-            }
-            else
-            {
-                Debug.LogError("AI画像生成に失敗しました。デフォルト画像を使用します。");
-                LoadAndSplitImage();
-            }
-        });
     }
 
     void LoadAndSplitImage()
@@ -116,18 +86,55 @@ public class TilesGen : MonoBehaviour
         // offsetを画面中央（原点）に揃える
         Vector3 offset = Vector3.zero;
 
-        // 枠の生成
-        if (frameObject != null) Destroy(frameObject);
-        frameObject = new GameObject("PuzzleFrame");
-        frameObject.transform.parent = this.transform;
-        frameObject.transform.position = offset;
-        SpriteRenderer frameSr = frameObject.AddComponent<SpriteRenderer>();
-        Sprite frameSprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
-        frameSr.sprite = frameSprite;
-        frameSr.drawMode = SpriteDrawMode.Sliced;
-        frameSr.size = new Vector2(totalWidth + 0.1f, totalHeight + 0.1f);
-        frameSr.color = new Color(0.9f, 0.85f, 0.7f, 1f);
-        frameSr.sortingOrder = -1;
+        // --- ▼▼▼ UI Imageを使ったパネルとヒントの生成 ▼▼▼ ---
+        // 1. パネルとヒントを配置するための「World Space Canvas」を生成
+        if (hintCanvasObject != null) Destroy(hintCanvasObject);
+        hintCanvasObject = new GameObject("HintCanvas");
+        hintCanvasObject.transform.parent = this.transform;
+
+        Canvas hintCanvas = hintCanvasObject.AddComponent<Canvas>();
+        hintCanvas.renderMode = RenderMode.WorldSpace;
+        hintCanvasObject.AddComponent<GraphicRaycaster>();
+
+        // 【重要】Canvasが他のSpriteRendererと正しくソートされるように設定
+        hintCanvas.overrideSorting = true; // ソート順を上書きする設定を有効に
+        hintCanvas.sortingOrder = -10;     // パズルピース(0以上)よりずっと小さい値を設定し、奥に描画
+
+        // CanvasのRectTransformを設定
+        RectTransform canvasRT = hintCanvasObject.GetComponent<RectTransform>();
+        // Z座標は物理的な位置を決めるが、描画順はsortingOrderが優先される
+        canvasRT.position = new Vector3(offset.x, offset.y, 0f); 
+        canvasRT.sizeDelta = new Vector2(totalWidth, totalHeight);
+        canvasRT.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+
+        // 2. Canvasの子要素として「白色パネル」をImageで生成
+        GameObject whitePanelGO = new GameObject("WhitePanel");
+        whitePanelGO.transform.parent = hintCanvasObject.transform;
+        Image panelImage = whitePanelGO.AddComponent<Image>();
+        panelImage.color = Color.white;
+        RectTransform panelRT = whitePanelGO.GetComponent<RectTransform>();
+        panelRT.anchorMin = Vector2.zero;
+        panelRT.anchorMax = Vector2.one;
+        panelRT.sizeDelta = Vector2.zero;
+        panelRT.anchoredPosition = Vector2.zero;
+
+        // 3. Canvasの子要素として「半透明ヒント」をImageで生成
+        GameObject hintImageGO = new GameObject("HintImage");
+        hintImageGO.transform.parent = hintCanvasObject.transform;
+        Image hintImage = hintImageGO.AddComponent<Image>();
+        hintImage.sprite = Sprite.Create(
+            mTextureOriginal,
+            new Rect(0, 0, mTextureOriginal.width, mTextureOriginal.height),
+            new Vector2(0.5f, 0.5f)
+        );
+        hintImage.color = new Color(1f, 1f, 1f, 0.5f);
+        RectTransform hintRT = hintImageGO.GetComponent<RectTransform>();
+        hintRT.anchorMin = Vector2.zero;
+        hintRT.anchorMax = Vector2.one;
+        hintRT.sizeDelta = Vector2.zero;
+        hintRT.anchoredPosition = Vector2.zero;
+        
+        // --- ▲▲▲ ここまでが修正箇所 ▲▲▲ ---
 
         // 生成されたタイルをシーンに配置
         int baseTileWidthPx = mTextureOriginal.width / col;
@@ -141,21 +148,14 @@ public class TilesGen : MonoBehaviour
                 Tile tile = mBoardGen.tiles[idx];
                 Texture2D finalCut = tile.finalCut;
 
-                // ベース画像左上座標（ピクセル単位）
                 float baseX = j * baseTileWidthPx;
                 float baseY = i * baseTileHeightPx;
 
-                // ワールド座標に変換
                 float x = -((float)mTextureOriginal.width / 2f) + baseX + tile.tileWidth / 2f;
                 float y = ((float)mTextureOriginal.height / 2f) - baseY - tile.tileHeight / 2f;
 
-                // パディング分だけ中心をずらす
                 float padOffsetX = ((float)tile.padL - (float)tile.padR) / 2f;
                 float padOffsetY = ((float)tile.padB - (float)tile.padT) / 2f;
-                // The pivot of the sprite is at the center of the final
-                // bounding box which includes padding. To align the original
-                // tile area correctly, move the pivot in the opposite
-                // direction of the padding difference.
                 x -= padOffsetX;
                 y -= padOffsetY;
 
@@ -168,7 +168,7 @@ public class TilesGen : MonoBehaviour
                 go.transform.position = piecePos;
 
                 SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
-                sr.sortingOrder = (row - i) * col + (col - j); // 上・左ほど手前
+                sr.sortingOrder = (row - i) * col + (col - j);
                 Sprite sprite = Sprite.Create(
                     finalCut,
                     new Rect(0, 0, finalCut.width, finalCut.height),
@@ -200,44 +200,27 @@ public class TilesGen : MonoBehaviour
         }
 
         // ランダムにピースを散らす
-        float scatterRadius = Mathf.Max(totalWidth, totalHeight) * 0.8f;
+        Camera mainCamera = Camera.main;
+        float camHeight = mainCamera.orthographicSize * 2;
+        float camWidth = camHeight * mainCamera.aspect;
+        
+        float padding = 1.0f;
+        float minX = -camWidth / 2 + padding;
+        float maxX = camWidth / 2 - padding;
+        float minY = -camHeight / 2 + padding;
+        float maxY = camHeight / 2 - padding;
+        
         foreach (var obj in mTileObjects)
         {
-            Vector2 rnd = Random.insideUnitCircle * scatterRadius; // 画面外に出過ぎないよう内側で散らす
-            Vector3 randomOffset = new Vector3(rnd.x, rnd.y, 0);
-            obj.transform.position += randomOffset;
+            float randomX = Random.Range(minX, maxX);
+            float randomY = Random.Range(minY, maxY);
+            
+            obj.transform.position = new Vector3(randomX, randomY, 0);
         }
     }
 
     void Update()
     {
-        // スペースキーで再生成
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (useAIGeneration)
-            {
-                StartCoroutine(GenerateAndLoadImage());
-            }
-            else
-            {
-                LoadAndSplitImage();
-            }
-        }
-        
-        // Gキーでデフォルト画像とAI生成画像を切り替え
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            useAIGeneration = !useAIGeneration;
-            Debug.Log("AI生成モード: " + (useAIGeneration ? "ON" : "OFF"));
-            
-            if (useAIGeneration)
-            {
-                StartCoroutine(GenerateAndLoadImage());
-            }
-            else
-            {
-                LoadAndSplitImage();
-            }
-        }
+        // 必要ありません。
     }
 }
